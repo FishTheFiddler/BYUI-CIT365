@@ -42,8 +42,8 @@ namespace CIT365_Week_1
         }
         // Calculate how many days there are until Christmas.
         static int DaysTilXmas(DateTime today, DateTime xmas) {
-            System.TimeSpan diff1 = xmas.Subtract(today);
-            return (int) diff1.Days;
+            System.TimeSpan diff = xmas.Subtract(today);
+            return (int) diff.Days;
         }
         // Display all the values once they have been assigned.
         static void DisplayValues(string name, string location, DateTime date, int daysTilXmas) {
