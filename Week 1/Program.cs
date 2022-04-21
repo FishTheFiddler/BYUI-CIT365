@@ -53,10 +53,9 @@ namespace CIT365_Week_1
         }
         // Display all the values once they have been assigned.
         static void DisplayValues(string name, string location, DateTime date, int daysTilXmas) {
-            Console.WriteLine("\nYour name is " + name + ", And you are from " + location + ".");
-            Console.WriteLine("Today's date is " + date.ToString("d") + ".");
-            Console.WriteLine("And there are " + daysTilXmas + " days until Christmas.\n");
-            
+            Console.WriteLine($"\nYour name is {name}, And you are from {location}.");
+            Console.WriteLine($"Today's date is { date.ToString("d")}.");
+            Console.WriteLine($"And there are {daysTilXmas} days until Christmas.\n");
         }
 
         static void BookFunction() {
@@ -70,10 +69,8 @@ namespace CIT365_Week_1
             height = double.Parse(heightString);
             woodLength = 2 * (width + height) * 3.25;
             glassArea = 2 * (width * height);
-            Console.WriteLine("The length of the wood is " +
-            woodLength + " feet");
-            Console.WriteLine("The area of the glass is " +
-            glassArea + " square metres\n");
+            Console.WriteLine($"The length of the wood is {woodLength} feet");
+            Console.WriteLine($"The area of the glass is {glassArea} square metres\n");
         }
     }
 }
