@@ -28,6 +28,7 @@ namespace CIT365_Week_1
             // Call the function from the book
             BookFunction();
 
+            // Ending the program by requiring the user to press any key.
             Console.WriteLine("Press Any Key to End Program...");
             Console.ReadKey();
         }
@@ -58,6 +59,7 @@ namespace CIT365_Week_1
             Console.WriteLine($"And there are {daysTilXmas} days until Christmas.\n");
         }
 
+        // This is the function from the book that I have altered slightly to be User friendly and use string interpolation.
         static void BookFunction() {
             double width, height, woodLength, glassArea;
             string widthString, heightString;
