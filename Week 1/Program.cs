@@ -24,6 +24,12 @@ namespace CIT365_Week_1
 
             // Display the final output
             DisplayValues(name, location, today, daysTilXmas);
+
+            // Call the function from the book
+            BookFunction();
+
+            Console.WriteLine("Press Any Key to End Program...");
+            Console.ReadKey();
         }
 
         // Prompt the User for their name. (No Validation)
@@ -50,8 +56,24 @@ namespace CIT365_Week_1
             Console.WriteLine("\nYour name is " + name + ", And you are from " + location + ".");
             Console.WriteLine("Today's date is " + date.ToString("d") + ".");
             Console.WriteLine("And there are " + daysTilXmas + " days until Christmas.\n");
-            Console.WriteLine("Press Any Key to End Program...");
-            Console.ReadKey();
+            
+        }
+
+        static void BookFunction() {
+            double width, height, woodLength, glassArea;
+            string widthString, heightString;
+            Console.Write("Enter Width: ");
+            widthString = Console.ReadLine();
+            width = double.Parse(widthString);
+            Console.Write("Enter Height: ");
+            heightString = Console.ReadLine();
+            height = double.Parse(heightString);
+            woodLength = 2 * (width + height) * 3.25;
+            glassArea = 2 * (width * height);
+            Console.WriteLine("The length of the wood is " +
+            woodLength + " feet");
+            Console.WriteLine("The area of the glass is " +
+            glassArea + " square metres\n");
         }
     }
 }
