@@ -21,7 +21,6 @@ namespace My_Scripture_Journal.Models
         [StringLength(5)]
         public string Verse { get; set; }
 
-        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
         [StringLength(100)]
         [Required]
         public string Notes { get; set; }
