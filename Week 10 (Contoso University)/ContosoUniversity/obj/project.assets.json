@@ -7188,11 +7188,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\wessp\\Documents\\ContosoV3\\ContosoUniversity\\ContosoUniversity.csproj",
+      "projectUniqueName": "C:\\Users\\wessp\\Documents\\GitHub\\.NET-Development-CIT365\\Week 10 (Contoso University)\\ContosoUniversity\\ContosoUniversity.csproj",
       "projectName": "ContosoUniversity",
-      "projectPath": "C:\\Users\\wessp\\Documents\\ContosoV3\\ContosoUniversity\\ContosoUniversity.csproj",
+      "projectPath": "C:\\Users\\wessp\\Documents\\GitHub\\.NET-Development-CIT365\\Week 10 (Contoso University)\\ContosoUniversity\\ContosoUniversity.csproj",
       "packagesPath": "C:\\Users\\wessp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\wessp\\Documents\\ContosoV3\\ContosoUniversity\\obj\\",
+      "outputPath": "C:\\Users\\wessp\\Documents\\GitHub\\.NET-Development-CIT365\\Week 10 (Contoso University)\\ContosoUniversity\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
