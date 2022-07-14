@@ -158,3 +158,9 @@ C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcorea
 C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Hymns\Details.cshtml.g.cs
 C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Hymns\Edit.cshtml.g.cs
 C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Hymns\Index.cshtml.g.cs
+C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Speakers\Create.cshtml.g.cs
+C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Speakers\Delete.cshtml.g.cs
+C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Speakers\Details.cshtml.g.cs
+C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Speakers\Edit.cshtml.g.cs
+C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\Speakers\Index.cshtml.g.cs
+C:\Users\wessp\Documents\School\CIT365\Final\SacramentPlanner\obj\Debug\netcoreapp3.1\Razor\Views\SacramentPlans\AddSpeakers.cshtml.g.cs

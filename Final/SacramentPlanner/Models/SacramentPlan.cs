@@ -22,12 +22,6 @@ namespace SacramentPlanner.Models
 
         public Hymn SacramentHymn { get; set; }
 
-        // Needs to be changed -----------
-        /*public Speaker Speaker1 { get; set; }
-        public Speaker Speaker2 { get; set; }
-        public Speaker Speaker3 { get; set; }*/
-        // -------------------------------
-
         public int NumberOfSpeakers { get; set; }
 
         public Hymn ClosingHymn { get; set; }

@@ -44,6 +44,8 @@ namespace SacramentPlanner.Controllers
                 return NotFound();
             }
 
+            ViewBag.speakers = _context.Speaker
+                .Where(s => s.SacramentPlanID == this.SacramentPlan.SacramentPlanID);
             return View(sacramentPlan);
         }
 
@@ -57,8 +59,13 @@ namespace SacramentPlanner.Controllers
         [BindProperty]
         public SacramentPlan SacramentPlan { get; set; }
 
+
         [BindProperty]
         public Hymn openingHymn { get; set; }
+        [BindProperty]
+        public Hymn sacramentHymn { get; set; }
+        [BindProperty]
+        public Hymn closingHymn { get; set; }
 
         // POST: SacramentPlans/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -69,17 +76,52 @@ namespace SacramentPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Needs work
                 _context.Hymn.Add(openingHymn);
                 await _context.SaveChangesAsync();
-
                 sacramentPlan.OpeningHymn = openingHymn;
+
+                _context.Hymn.Add(sacramentHymn);
+                await _context.SaveChangesAsync();
+                sacramentPlan.OpeningHymn = sacramentHymn;
+
+                _context.Hymn.Add(closingHymn);
+                await _context.SaveChangesAsync();
+                sacramentPlan.OpeningHymn = closingHymn;
 
                 _context.Add(sacramentPlan);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //await AddSpeakers(sacramentPlan.SacramentPlanID);
+                return RedirectToAction("AddSpeakers", new {id = sacramentPlan.SacramentPlanID});
             }
+
+            
+
             return View(sacramentPlan);
+        }
+        // GET: SacramentPlans/AddSpeakers/5
+        public async Task<IActionResult> AddSpeakers(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var sacramentPlan = await _context.SacramentPlan.FindAsync(id);
+            if (sacramentPlan == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.ID = sacramentPlan.SacramentPlanID;
+            ViewBag.NumberOfSpeakers = sacramentPlan.NumberOfSpeakers;
+            return View(sacramentPlan);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddSpeakers()
+        {
+
+            return View();
         }
 
         // GET: SacramentPlans/Edit/5

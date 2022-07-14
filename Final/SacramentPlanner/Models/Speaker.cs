@@ -11,7 +11,10 @@ namespace SacramentPlanner.Models
 
         public string Name { get; set; }
 
-        //public ICollection<SacramentPlanAssignment> SacramentPlanAssignments { get; set; }
+        public string Topic { get; set; }
+
+
+        public int SacramentPlanID { get; set; }
 
     }
 }

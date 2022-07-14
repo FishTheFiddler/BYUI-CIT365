@@ -1,0 +1,49 @@
+﻿@model SacramentPlanner.Models.SacramentPlan
+
+@{
+    ViewData["Title"] = "Add Speaker";
+}
+
+<h1>Add Speakers</h1>
+
+<h4>Add Speakers to Sacrament Plan</h4>
+<hr />
+<input type="hidden" asp-for="SacramentPlanID" />
+<body>
+    @{
+    ViewBag.Title = "Index";
+    var ID = ViewBag.ID;
+    var NumberOfSpeakers = ViewBag.NumberOfSpeakers;
+    }
+    <p>There are @NumberOfSpeakers speakers.</p>
+    @*<form>
+
+        @for (i = 1; i < NumberOfSpeakers; i++)
+        {
+                <div class="form-group">
+                    <label asp-for="Name " class="control-label"></label>
+                    <input asp-for="Name " class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Topic " class="control-label"></label>
+                    <input asp-for="Topic " class="form-control" />
+                    <span asp-validation-for="Topic " class="text-danger"></span>
+                </div>
+            }
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>*@
+</body>
+
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
