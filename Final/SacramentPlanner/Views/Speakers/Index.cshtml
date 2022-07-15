@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SacramentPlanner.Models.Speaker>
+<!-- IEnumerable<SacramentPlanner.Models.Speaker>-->
 
 @{
     ViewData["Title"] = "Index";
@@ -9,6 +10,11 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+@{
+    ViewBag.Title = "Index";
+    var ID = ViewBag.ID;
+    var NumberOfSpeakers = ViewBag.NumberOfSpeakers;
+}
 <table class="table">
     <thead>
         <tr>
@@ -23,58 +29,3 @@
     </thead>
 
 </table>
-    @*<tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Topic)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.SpeakerID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.SpeakerID">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.SpeakerID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>*@
-
-
-@*@if (Model.Courses != null)
-{
-    <h3>Courses Taught by Selected Instructor</h3>
-    <table class="table">
-        <tr>
-            <th></th>
-            <th>Number</th>
-            <th>Title</th>
-            <th>Department</th>
-        </tr>
-
-        @foreach (var item in Model.Courses)
-        {
-            string selectedRow = "";
-            if (item.CourseID == (int?)ViewData["CourseID"])
-            {
-                selectedRow = "success";
-            }
-            <tr class="@selectedRow">
-                <td>
-                    @Html.ActionLink("Select", "Index", new { courseID = item.CourseID })
-                </td>
-                <td>
-                    @item.CourseID
-                </td>
-                <td>
-                    @item.Title
-                </td>
-                <td>
-                    @item.Department.Name
-                </td>
-            </tr>
-        }
-
-    </table>*@

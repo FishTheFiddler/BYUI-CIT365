@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SacramentPlanner.Data;
 using SacramentPlanner.Models;
 
+
 namespace SacramentPlanner.Controllers
 {
     public class SpeakersController : Controller
@@ -20,7 +21,7 @@ namespace SacramentPlanner.Controllers
         }
 
         // GET: Speakers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
             return View(await _context.Speaker.ToListAsync());
         }
@@ -43,9 +44,11 @@ namespace SacramentPlanner.Controllers
             return View(speaker);
         }
 
+
         // GET: Speakers/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            ViewBag.ID = id;
             return View();
         }
 

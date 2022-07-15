@@ -91,10 +91,12 @@ namespace SacramentPlanner.Controllers
                 _context.Add(sacramentPlan);
                 await _context.SaveChangesAsync();
                 //await AddSpeakers(sacramentPlan.SacramentPlanID);
-                return RedirectToAction("AddSpeakers", new {id = sacramentPlan.SacramentPlanID});
+                ViewBag.ID = sacramentPlan.SacramentPlanID;
+                ViewBag.NumberOfSpeakers = sacramentPlan.NumberOfSpeakers;
+                return RedirectToAction("Index", "Speakers", new {id = sacramentPlan.SacramentPlanID});
             }
+            // "~/Views/Speakers/Index.cshtml"
 
-            
 
             return View(sacramentPlan);
         }
@@ -120,7 +122,6 @@ namespace SacramentPlanner.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddSpeakers()
         {
-
             return View();
         }
 
