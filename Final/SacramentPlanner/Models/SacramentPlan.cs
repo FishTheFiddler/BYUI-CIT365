@@ -11,20 +11,31 @@ namespace SacramentPlanner.Models
 
         public int SacramentPlanID { get; set; }
 
+        [Required]
         [DataType(DataType.Date)]
         public DateTime Date { get; set; }
 
+        [Required]
         public string Conducting { get; set; }
 
+        [Required]
         public string Invocation { get; set; }
 
+        [Required]
+        [Display(Name = "Opening Hymn")]
         public Hymn OpeningHymn { get; set; }
 
+        [Required]
+        [Display(Name = "Sacrament Hymn")]
         public Hymn SacramentHymn { get; set; }
 
         public int NumberOfSpeakers { get; set; }
 
+        [Required]
+        [Display(Name = "Closing Hymn")]
         public Hymn ClosingHymn { get; set; }
+
+        [Required]
         public string Benediction { get; set; }
 
 

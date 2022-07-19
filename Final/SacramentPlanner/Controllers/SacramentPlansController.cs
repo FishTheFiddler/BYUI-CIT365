@@ -38,6 +38,9 @@ namespace SacramentPlanner.Controllers
             }
 
             var sacramentPlan = await _context.SacramentPlan
+                .Include(s => s.OpeningHymn)
+                .Include(s => s.SacramentHymn)
+                .Include(s => s.ClosingHymn)
                 .FirstOrDefaultAsync(m => m.SacramentPlanID == id);
             if (sacramentPlan == null)
             {
@@ -55,7 +58,7 @@ namespace SacramentPlanner.Controllers
         // GET: SacramentPlans/Create
         public IActionResult Create()
         {
-            ViewData["HymnTitle"] = new SelectList(_context.Hymn, "HymnTitle", "HymnTitle");
+            ViewData["HymnID"] = new SelectList(_context.Hymn, "HymnTitle", "HymnTitle");
             return View();
         }
 
@@ -63,39 +66,39 @@ namespace SacramentPlanner.Controllers
         public SacramentPlan SacramentPlan { get; set; }
 
 
-        [BindProperty]
+       /* [BindProperty]
         public Hymn OpeningHymn { get; set; }
         [BindProperty]
         public Hymn SacramentHymn { get; set; }
         [BindProperty]
-        public Hymn ClosingHymn { get; set; }
+        public Hymn ClosingHymn { get; set; }*/
 
         // POST: SacramentPlans/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SacramentPlanID,Date,Conducting,Invocation,NumberOfSpeakers,Benediction")] SacramentPlan sacramentPlan)
+        public async Task<IActionResult> Create([Bind("SacramentPlanID,Date,Conducting,Invocation,NumberOfSpeakers,Benediction,OpeningHymn,SacramentHymn,ClosingHymn")] SacramentPlan sacramentPlan)
         {
             if (ModelState.IsValid)
             {
-                _context.Hymn.Add(OpeningHymn);
+                /*//_context.Hymn.Add(OpeningHymn);
                 await _context.SaveChangesAsync();
                 sacramentPlan.OpeningHymn = OpeningHymn;
 
-                _context.Hymn.Add(SacramentHymn);
+                //_context.Hymn.Add(SacramentHymn);
                 await _context.SaveChangesAsync();
                 sacramentPlan.SacramentHymn = SacramentHymn;
 
-                _context.Hymn.Add(ClosingHymn);
+                //_context.Hymn.Add(ClosingHymn);
                 await _context.SaveChangesAsync();
-                sacramentPlan.ClosingHymn = ClosingHymn;
+                sacramentPlan.ClosingHymn = ClosingHymn;*/
 
                 _context.Add(sacramentPlan);
                 await _context.SaveChangesAsync();
                 //await AddSpeakers(sacramentPlan.SacramentPlanID);
                 ViewBag.ID = sacramentPlan.SacramentPlanID;
-                ViewBag.NumberOfSpeakers = sacramentPlan.NumberOfSpeakers;
+                //ViewBag.NumberOfSpeakers = sacramentPlan.NumberOfSpeakers;
                 return RedirectToAction("Index", "Speakers", new {id = sacramentPlan.SacramentPlanID});
             }
             // "~/Views/Speakers/Index.cshtml"
