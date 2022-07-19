@@ -44,8 +44,11 @@ namespace SacramentPlanner.Controllers
                 return NotFound();
             }
 
-            ViewBag.speakers = _context.Speaker
-                .Where(s => s.SacramentPlanID == this.SacramentPlan.SacramentPlanID);
+            var speakerQuery = from s in _context.Speaker
+                               where s.SacramentPlanID == sacramentPlan.SacramentPlanID
+                               select s;
+            ViewBag.speaker = new List<Speaker>(speakerQuery);
+
             return View(sacramentPlan);
         }
 
@@ -61,11 +64,11 @@ namespace SacramentPlanner.Controllers
 
 
         [BindProperty]
-        public Hymn openingHymn { get; set; }
+        public Hymn OpeningHymn { get; set; }
         [BindProperty]
-        public Hymn sacramentHymn { get; set; }
+        public Hymn SacramentHymn { get; set; }
         [BindProperty]
-        public Hymn closingHymn { get; set; }
+        public Hymn ClosingHymn { get; set; }
 
         // POST: SacramentPlans/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
@@ -76,17 +79,17 @@ namespace SacramentPlanner.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Hymn.Add(openingHymn);
+                _context.Hymn.Add(OpeningHymn);
                 await _context.SaveChangesAsync();
-                sacramentPlan.OpeningHymn = openingHymn;
+                sacramentPlan.OpeningHymn = OpeningHymn;
 
-                _context.Hymn.Add(sacramentHymn);
+                _context.Hymn.Add(SacramentHymn);
                 await _context.SaveChangesAsync();
-                sacramentPlan.OpeningHymn = sacramentHymn;
+                sacramentPlan.SacramentHymn = SacramentHymn;
 
-                _context.Hymn.Add(closingHymn);
+                _context.Hymn.Add(ClosingHymn);
                 await _context.SaveChangesAsync();
-                sacramentPlan.OpeningHymn = closingHymn;
+                sacramentPlan.ClosingHymn = ClosingHymn;
 
                 _context.Add(sacramentPlan);
                 await _context.SaveChangesAsync();

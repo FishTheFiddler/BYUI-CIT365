@@ -21,9 +21,12 @@ namespace SacramentPlanner.Controllers
         }
 
         // GET: Speakers
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int id)
         {
-            return View(await _context.Speaker.ToListAsync());
+            ViewBag.ID = id;
+            return View(await _context.Speaker
+                .Where(s => s.SacramentPlanID == id)
+                .ToListAsync());
         }
 
         // GET: Speakers/Details/5
@@ -36,6 +39,7 @@ namespace SacramentPlanner.Controllers
 
             var speaker = await _context.Speaker
                 .FirstOrDefaultAsync(m => m.SpeakerID == id);
+            ViewBag.SacramentPlanID = speaker.SacramentPlanID;
             if (speaker == null)
             {
                 return NotFound();
@@ -48,7 +52,8 @@ namespace SacramentPlanner.Controllers
         // GET: Speakers/Create
         public IActionResult Create(int? id)
         {
-            ViewBag.ID = id;
+
+            ViewBag.SacramentPlanID = id;
             return View();
         }
 
@@ -63,7 +68,8 @@ namespace SacramentPlanner.Controllers
             {
                 _context.Add(speaker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ViewBag.ID = speaker.SacramentPlanID;
+                return RedirectToAction("Index", "Speakers", new { id = ViewBag.ID });
             }
             return View(speaker);
         }
@@ -77,6 +83,7 @@ namespace SacramentPlanner.Controllers
             }
 
             var speaker = await _context.Speaker.FindAsync(id);
+            ViewBag.SacramentPlanID = speaker.SacramentPlanID;
             if (speaker == null)
             {
                 return NotFound();
@@ -114,7 +121,8 @@ namespace SacramentPlanner.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                // ViewBag.ID = speaker.SacramentPlanID;
+                return RedirectToAction("Index", "Speakers", new { id = speaker.SacramentPlanID });
             }
             return View(speaker);
         }
@@ -129,6 +137,7 @@ namespace SacramentPlanner.Controllers
 
             var speaker = await _context.Speaker
                 .FirstOrDefaultAsync(m => m.SpeakerID == id);
+            ViewBag.SacramentPlanID = speaker.SacramentPlanID;
             if (speaker == null)
             {
                 return NotFound();
@@ -145,7 +154,7 @@ namespace SacramentPlanner.Controllers
             var speaker = await _context.Speaker.FindAsync(id);
             _context.Speaker.Remove(speaker);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Speakers", new { id = speaker.SacramentPlanID });
         }
 
         private bool SpeakerExists(int id)
